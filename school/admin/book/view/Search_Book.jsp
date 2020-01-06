@@ -54,7 +54,25 @@
 	});
    </script>
     
-    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.6.1/firebase-app.js"></script>
+<script defer src="https://www.gstatic.com/firebasejs/7.6.0/firebase-firestore.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.6.0/firebase-auth.js"></script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){
+const db= firebase.firestore();
+db.doc('/record/GYwCRhmhBpfKP0knOHAa/').get().then(res=>{
+document.getElementById('books').innerHTML += res.data().totalBooks;
+document.getElementById('outBooks').innerHTML += res.data().totalBooksOut;
+document.getElementById('issue').innerHTML += res.data().totalIssues;
+document.getElementById('student').innerHTML += res.data().totalStudents;
+// document.getElementById("load").style.display = "none";
+})
+})
+
+</script>
     
 </head>
 
@@ -291,9 +309,9 @@
                                         <i class="fa fa-book"></i>
                                     </div>
                                     <div>
-                                        <h3 class="no-margin">
+                                        <h3 id="books"class="no-margin">
                                         	
-                                        	<%=obj_Home_Page_Use_Bean.getBook_count() %>
+                                        	<!-- <%=obj_Home_Page_Use_Bean.getBook_count() %> -->
                                         
                                         </h3>
                                         Total Books
@@ -308,8 +326,8 @@
                                         <i class="fa fa-users"></i>
                                     </div>
                                     <div>
-                                        <h3 class="no-margin">
-											<%=obj_Home_Page_Use_Bean.getStudent_count() %>
+                                        <h3 id="student" class="no-margin">
+											<!-- <%=obj_Home_Page_Use_Bean.getStudent_count() %> -->
                                         
 										</h3>
                                         Total Students
@@ -324,9 +342,9 @@
                                         <i class="fa fa-magnet"></i>
                                     </div>
                                     <div>
-                                        <h3 class="no-margin">
+                                        <h3 id="issue" class="no-margin">
                                         
-                                        <%=obj_Home_Page_Use_Bean.getTotal_issues_today() %>
+                                        <!-- <%=obj_Home_Page_Use_Bean.getTotal_issues_today() %> -->
                                         
                                         
                                         </h3>
@@ -342,9 +360,9 @@
                                         <i class="fa fa-star"></i>
                                     </div>
                                     <div>
-                                        <h3 class="no-margin"> 
+                                        <h3 id="outBooks" class="no-margin"> 
                                         
-                                        <%=obj_Home_Page_Use_Bean.getTotal_books_out() %>
+                                        <!-- <%=obj_Home_Page_Use_Bean.getTotal_books_out() %> -->
                                         
                                         
                                         </h3>
